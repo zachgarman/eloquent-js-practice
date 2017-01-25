@@ -32,28 +32,26 @@ function chessBoard (gridSize) {
     return;
   };
 
+  makeBoard(gridSize);
+}
+
+function makeBoard(gridSize) {
   for (var i = 1; i <= gridSize; i++) {
-    var gridLine = '';
-    if (i % 2 === 1) {
-      gridLine += ' ';
-    } else {
-      gridLine += '#'
-    }
-    completeLine(gridLine, gridSize);
+    var gridLine = startLine(i);
+    console.log(completeLine(gridLine, gridSize));
   }
+}
+
+function startLine(i) {
+  return (i % 2) ? ' ' : '#';
 }
 
 function completeLine (gridLine, gridSize) {
   for (var j = 2; j <= gridSize; j++) {
-    if (gridLine[(gridLine.length - 1)] === '#') {
-      gridLine += ' ';
-    } else {
-      gridLine += '#';
-    }
+    gridLine += (gridLine[(gridLine.length -1)] === '#') ? ' ' : '#';
   }
-  // Looks better when making a full square board
-  console.log(gridLine + gridLine);
+  return gridLine;
 }
 
-//chessBoard(8);
+chessBoard(6);
 //works!
